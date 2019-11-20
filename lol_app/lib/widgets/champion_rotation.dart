@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lol_app/constants/strings.dart';
+import 'package:lol_app/pages/champion_details.dart';
 class ChampionRotation extends StatelessWidget{
   final String championName;
 
@@ -14,7 +15,7 @@ class ChampionRotation extends StatelessWidget{
         borderRadius: BorderRadius.all(Radius.circular(12))
       ),
       child: InkWell(
-        onTap: (){},
+        onTap: () => Navigator.push(context,MaterialPageRoute(builder: (_) => ChampionDetails(championName: championName,))),
         child: Container(
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
@@ -39,7 +40,8 @@ class ChampionRotation extends StatelessWidget{
                     championName,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 14
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ),
