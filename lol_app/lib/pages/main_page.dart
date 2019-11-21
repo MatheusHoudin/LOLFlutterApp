@@ -64,7 +64,7 @@ class MainPage extends StatelessWidget{
                 itemCount: database.champions.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index){
-                  return ChampionRotation(championName: database.champions[index].name,);
+                  return ChampionRotation(champion: database.champions[index],);
                 },
               ),
             ),

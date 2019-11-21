@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:lol_app/constants/strings.dart';
+import 'package:lol_app/model/champion.dart';
 class ChampionDetails extends StatelessWidget{
-  String championName;
+  Champion champion;
 
-  ChampionDetails({this.championName});
+  ChampionDetails({this.champion});
 
   @override
   Widget build(BuildContext context) {
+    print("aa");
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Hero(
-            tag: championName,
-            child: Image.network('$squareImagePath$championName.png',width: 100,height: 100,),
+            tag: champion.name,
+            child: Image.network('$squareImagePath${champion.name}.png',width: 100,height: 100,),
           ),
         ),
-        title: Text(championName),
+        title: Text(champion.name),
       ),
       body: Center(
-        child: Text(championName),
+        child: Column(
+          children: champion.skills.map((skill) => Image.network('http://ddragon.leagueoflegends.com/cdn/9.23.1/img/x${skill.url}',width: 100,height: 100,)).toList(),
+        ),
       ),
     );
   }

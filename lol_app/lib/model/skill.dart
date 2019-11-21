@@ -1,7 +1,7 @@
 class Skill{
-  String id;
+  String url;
   String name;
   String description;
 
-  Skill({this.id,this.name,this.description});
+  Skill({this.url,this.name,this.description});
 }

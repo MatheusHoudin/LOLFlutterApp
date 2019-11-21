@@ -44,15 +44,15 @@ class ChampionsList extends StatelessWidget{
     );
   }
 
-  Widget _championImage(String championName,BuildContext context){
+  Widget _championImage(Champion champion,BuildContext context){
     return GestureDetector(
       onTap: (){
         print("clicked");
-        Navigator.push(context,MaterialPageRoute(builder: (_) => ChampionDetails(championName: championName,)));
+        Navigator.push(context,MaterialPageRoute(builder: (_) => ChampionDetails(champion: champion,)));
       },
       child: Hero(
-        tag: championName,
-        child: Image.network('$squareImagePath$championName.png'),
+        tag: champion.name,
+        child: Image.network('$squareImagePath${champion.name}.png'),
       ),
     );
   }
@@ -61,7 +61,7 @@ class ChampionsList extends StatelessWidget{
     List<Widget> widgets = [];
     for(Champion champion in database.champions){
       staggeredTiles.add(championTile);
-      widgets.add(_championImage(champion.name, context));
+      widgets.add(_championImage(champion, context));
     }
     return widgets;
   }
