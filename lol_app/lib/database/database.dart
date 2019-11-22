@@ -3,22 +3,32 @@ import 'package:lol_app/model/skin.dart';
 import 'package:lol_app/model/skill.dart';
 class Database{
   List<Champion> champions;
+  List<Champion> rotationChampions;
+  List<String> tags;
 
   Database(){
     getChampions();
+    getTags();
+    getRotationChampions();
   }
-//  final List<String> champions = [
-//    'Azir',
-//    'Zilean',
-//    'Brand',
-//    'Anivia',
-//    'Gnar',
-//    'Braum',
-//    'Caitlyn',
-//    'MasterYi',
-//    'Kayn',
-//    'Zed'
-//  ];
+
+  void getRotationChampions(){
+    rotationChampions = champions;
+    rotationChampions.shuffle();
+    rotationChampions = rotationChampions.sublist(0,6);
+  }
+
+  void getTags(){
+    tags = [
+      'Mage',
+      'Marksman',
+      'Support',
+      'Fighter',
+      'Tank',
+      'Assassin'
+    ];
+  }
+
   void getChampions(){
     Champion azir = Champion(
         name: 'Azir',

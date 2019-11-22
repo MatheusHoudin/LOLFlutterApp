@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lol_app/constants/strings.dart';
 import 'package:lol_app/model/champion.dart';
+import 'package:lol_app/model/skin.dart';
 class ChampionDetails extends StatelessWidget{
-  Champion champion;
+  final Champion champion;
 
   ChampionDetails({this.champion});
 
   @override
   Widget build(BuildContext context) {
-    print("aa");
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -20,11 +20,30 @@ class ChampionDetails extends StatelessWidget{
         ),
         title: Text(champion.name),
       ),
-      body: Center(
-        child: Column(
-          children: champion.skills.map((skill) => Image.network('http://ddragon.leagueoflegends.com/cdn/9.23.1/img/x${skill.url}',width: 100,height: 100,)).toList(),
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(child: _championSkins())
+        ],
       ),
     );
   }
+  
+  Widget _championSkins(){
+    return PageView(
+      scrollDirection: Axis.horizontal,
+      children: champion.skins.map((skin) => Image.network('$skinImagePath${champion.name}_${skin.skinNumber.toString()}.jpg',width: 200,height: 200,)).toList(),
+    );
+  }
+
+  Widget _skin(Skin skin){
+    return Stack(
+      children: <Widget>[
+
+      ],
+    );
+  }
 }
+
+//child: Column(
+//children: champion.skills.map((skill) => Image.network('$skillsImagePath${skill.url}',width: 100,height: 100,)).toList(),
+//)

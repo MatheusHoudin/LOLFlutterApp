@@ -61,10 +61,10 @@ class MainPage extends StatelessWidget{
             child: Container(
               height: MediaQuery.of(context).size.height * 0.2,
               child: ListView.builder(
-                itemCount: database.champions.length,
+                itemCount: database.rotationChampions.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index){
-                  return ChampionRotation(champion: database.champions[index],);
+                  return ChampionRotation(champion: database.rotationChampions[index],);
                 },
               ),
             ),
