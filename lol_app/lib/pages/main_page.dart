@@ -11,7 +11,7 @@ class MainPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: background,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         backgroundColor: Color(0xff121212),
         leading: Padding(
@@ -19,9 +19,9 @@ class MainPage extends StatelessWidget{
           child: Image.asset('assets/images/logo_lol.jpg'),
         ),
         title: Text(
-          'LOL',
+          'League of Legends',
           style: TextStyle(
-            color: textColor
+            color: appBarTextColor
           ),
         ),
       ),
@@ -29,7 +29,12 @@ class MainPage extends StatelessWidget{
         child: Column(
           children: <Widget>[
             _championRotation(context),
-            Expanded(child: ChampionsList(database: database,))
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 4,right: 4),
+                child: ChampionsList(database: database,),
+              ),
+            )
           ],
         )
       ),
@@ -48,9 +53,10 @@ class MainPage extends StatelessWidget{
             child: Container(
               alignment: Alignment.center,
               child: Text(
-                'Rotação Semanal',
+                'Free Champion Rotation',
                 style: TextStyle(
                   fontSize: 20,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold
                 ),
               ),

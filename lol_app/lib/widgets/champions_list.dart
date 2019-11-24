@@ -36,9 +36,10 @@ class ChampionsList extends StatelessWidget{
 
   Widget SectionTitle(){
     return Text(
-      'Campeões',
+      'Champions',
       style: TextStyle(
         fontWeight: FontWeight.bold,
+        color: Colors.white,
         fontSize: 20
       ),
     );
@@ -47,7 +48,6 @@ class ChampionsList extends StatelessWidget{
   Widget _championImage(Champion champion,BuildContext context){
     return GestureDetector(
       onTap: (){
-        print("clicked");
         Navigator.push(context,MaterialPageRoute(builder: (_) => ChampionDetails(champion: champion,)));
       },
       child: Hero(

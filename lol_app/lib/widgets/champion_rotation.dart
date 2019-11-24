@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lol_app/constants/strings.dart';
+import 'package:lol_app/constants/colors.dart';
 import 'package:lol_app/model/champion.dart';
 import 'package:lol_app/pages/champion_details.dart';
 class ChampionRotation extends StatelessWidget{
@@ -10,7 +11,7 @@ class ChampionRotation extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: cardColor,
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(12))
@@ -37,11 +38,15 @@ class ChampionRotation extends StatelessWidget{
                 flex: 2,
                 child: Container(
                   alignment: Alignment.center,
+                  padding: EdgeInsets.all(4),
                   child: Text(
                     champion.name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold
                     ),
                   ),
