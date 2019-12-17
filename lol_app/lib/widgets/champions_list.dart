@@ -6,9 +6,8 @@ import 'package:lol_app/database/database.dart';
 import 'package:lol_app/model/champion.dart';
 class ChampionsList extends StatelessWidget{
   final Database database;
-  StaggeredTile championTile = StaggeredTile.count(1, 1);
-  StaggeredTile titleSectionTile = StaggeredTile.count(3, 0.5);
-  List<StaggeredTile> staggeredTiles = List<StaggeredTile>();
+  final StaggeredTile championTile = StaggeredTile.count(1, 1);
+  final List<StaggeredTile> staggeredTiles = List<StaggeredTile>();
 
   ChampionsList({this.database});
 
@@ -17,7 +16,7 @@ class ChampionsList extends StatelessWidget{
     return Column(
       children: <Widget>[
         Container(
-          height: MediaQuery.of(context).size.height * 0.1,
+          margin: EdgeInsets.all(10),
           alignment: Alignment.center,
           child: SectionTitle(),
         ),
@@ -25,8 +24,6 @@ class ChampionsList extends StatelessWidget{
           child: StaggeredGridView.count(
             crossAxisCount: 3,
             staggeredTiles: staggeredTiles,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
             children: _championsList(context),
           ),
         )
@@ -52,7 +49,7 @@ class ChampionsList extends StatelessWidget{
       },
       child: Hero(
         tag: champion.name,
-        child: Image.network('$squareImagePath${champion.name}.png'),
+        child: Image.network('$squareImagePath${champion.name}.png',),
       ),
     );
   }

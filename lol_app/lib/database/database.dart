@@ -4,88 +4,74 @@ import 'package:lol_app/model/skill.dart';
 class Database{
   List<Champion> champions;
   List<Champion> rotationChampions;
-  List<String> tags;
 
   Database(){
     getChampions();
-    getTags();
     getRotationChampions();
   }
 
   void getRotationChampions(){
-    rotationChampions = champions;
-    rotationChampions.shuffle();
-    rotationChampions = rotationChampions.sublist(0,6);
-  }
-
-  void getTags(){
-    tags = [
-      'Mage',
-      'Marksman',
-      'Support',
-      'Fighter',
-      'Tank',
-      'Assassin'
-    ];
+    champions.shuffle();
+    rotationChampions = champions.sublist(0,6);
   }
 
   void getChampions(){
     Champion azir = Champion(
         name: 'Azir',
         lore: 'Azir was a mortal emperor of Shurima'
-        ' in a far distant age, a proud man who stood at the cusp of immortality. His '
-        'hubris saw him betrayed and murdered at the moment of his greatest triumph, '
-        'but now, millennia later, he has been reborn as an Ascended being of immense power.'
-        ' With his buried city risen from the sand, Azir seeks to restore Shurima to its former glory.',
+            ' in a far distant age, a proud man who stood at the cusp of immortality. His '
+            'hubris saw him betrayed and murdered at the moment of his greatest triumph, '
+            'but now, millennia later, he has been reborn as an Ascended being of immense power.'
+            ' With his buried city risen from the sand, Azir seeks to restore Shurima to its former glory.',
         tags: ['Mage','Marksman'],
         blueEssencePrice: 6300,
         rpPrice: 975,
         skins: [Skin(skinName: 'Azir',skinNumber: 0),Skin(skinName: 'Galactic Azir',skinNumber: 1, price: 975),
-        Skin(skinNumber: 2,skinName: 'Gravelord Azir',price: 1350),Skin(skinNumber: 3,skinName: 'SKT T1 Azir', price: 975),Skin(skinNumber: 4,skinName: 'Warring Kingdoms Azir',price: 1350)],
+          Skin(skinNumber: 2,skinName: 'Gravelord Azir',price: 1350),Skin(skinNumber: 3,skinName: 'SKT T1 Azir', price: 975),Skin(skinNumber: 4,skinName: 'Warring Kingdoms Azir',price: 1350)],
         skills: [Skill(url: 'passive/Azir_Passive.png',name: 'Shurima\'s Legacy',description: 'Azir can summon the Disc of the Sun from the ruins of allied or enemy turrets.'),
-        Skill(url: 'spell/AzirQWrapper.png',name: 'Conquering Sands',description: 'Azir sends all Sand Soldiers towards a location. Sand Soldiers deal magic damage to enemies they pass through and apply a slow for 1 second.'),
-        Skill(url: 'spell/AzirW.png',name: 'Arise!',description: 'Azir summons a Sand Soldier to attack nearby targets for him, replacing his basic attack against targets within the soldier\'s range. Their attacks deal magic damage to enemies in a line. Arise! also passively grants attack speed to Azir and his Sand Soldiers.'),
-        Skill(url: 'spell/AzirEWrapper.png',name: 'Shifting Sands',description: 'Azir shields himself briefly and dashes to one of his Sand Soldiers, damaging enemies. If he hits an enemy champion, he instantly readies a new Sand Soldier for deployment and halts his dash.'),
-        Skill(url: 'spell/AzirR.png',name: 'Emperor\'s Divide',description: 'Azir summons a wall of soldiers which charge forward, knocking back and damaging enemies.')]);
+          Skill(url: 'spell/AzirQWrapper.png',name: 'Conquering Sands',description: 'Azir sends all Sand Soldiers towards a location. Sand Soldiers deal magic damage to enemies they pass through and apply a slow for 1 second.'),
+          Skill(url: 'spell/AzirW.png',name: 'Arise!',description: 'Azir summons a Sand Soldier to attack nearby targets for him, replacing his basic attack against targets within the soldier\'s range. Their attacks deal magic damage to enemies in a line. Arise! also passively grants attack speed to Azir and his Sand Soldiers.'),
+          Skill(url: 'spell/AzirEWrapper.png',name: 'Shifting Sands',description: 'Azir shields himself briefly and dashes to one of his Sand Soldiers, damaging enemies. If he hits an enemy champion, he instantly readies a new Sand Soldier for deployment and halts his dash.'),
+          Skill(url: 'spell/AzirR.png',name: 'Emperor\'s Divide',description: 'Azir summons a wall of soldiers which charge forward, knocking back and damaging enemies.')]);
 
     Champion zilean = Champion(
-      name: 'Zilean',
-      lore: 'Once a powerful Icathian mage, Zilean became obsessed with the passage of time after '
-          'witnessing his homeland\'s destruction by the Void. Unable to spare even a minute to grieve'
-          ' the catastrophic loss, he called upon ancient temporal magic to divine all possible outcomes.'
-          ' Having become functionally immortal, Zilean now drifts through the past, present, and future,'
-          ' bending and warping the flow of time around him, always searching for that elusive moment that'
-          ' will turn back the clock and undo Icathia\'s destruction.',
-      tags: ['Support','Mage'],
-      blueEssencePrice: 1350,
-      rpPrice: 585,
-      skins: [Skin(skinName: 'Zilean',skinNumber: 0),Skin(skinName: 'Old Saint Zilean',skinNumber: 1, price: 520),Skin(skinName: 'Groovy Zilean',skinNumber: 2, price: 520),
-      Skin(skinName: 'Shurima Desert Zilean',skinNumber: 3, price: 975),Skin(skinName: 'Time Machine Zilean',skinNumber: 4,price:520),Skin(skinName: 'Blood Moon Zilean',skinNumber: 5,price: 975)],
-      skills: [Skill(url: 'passive/Zilean_Passive.png',name: 'Time in a Bottle',description: 'Zilean stores time as Experience. When he has enough Experience to finish an ally\'s level, he can right-click them to impart it. Zilean receives as much Experience as he gives. Cannot be used in combat.'),
-      Skill(url: 'spell/ZileanQ.png',name: 'Time Bomb',description: 'Tosses a bomb to target area that sticks to units that come near it (prioritizes Champions). It detonates after 3 seconds, dealing area of effect damage. If a Time Bomb is detonated early by another Time Bomb, it also stuns enemies.'),
-      Skill(url: 'spell/ZileanW.png',name: 'Rewind',description: 'Zilean can prepare himself for future confrontations, reducing the cooldowns of his other basic abilities.'),
-      Skill(url: 'spell/TimeWarp.png',name: 'Time Warp',description: 'Zilean bends time around any unit, decreasing an enemy\'s Movement Speed or increasing an ally\'s Movement Speed for a short time.'),
-      Skill(url: 'spell/ChronoShift.png',name: 'ChronoShift',description: 'Zilean places a protective time rune on an allied champion, teleporting the champion back in time if they take lethal damage.')]
+        name: 'Zilean',
+        lore: 'Once a powerful Icathian mage, Zilean became obsessed with the passage of time after '
+            'witnessing his homeland\'s destruction by the Void. Unable to spare even a minute to grieve'
+            ' the catastrophic loss, he called upon ancient temporal magic to divine all possible outcomes.'
+            ' Having become functionally immortal, Zilean now drifts through the past, present, and future,'
+            ' bending and warping the flow of time around him, always searching for that elusive moment that'
+            ' will turn back the clock and undo Icathia\'s destruction.',
+        tags: ['Support','Mage'],
+        blueEssencePrice: 1350,
+        rpPrice: 585,
+        skins: [Skin(skinName: 'Zilean',skinNumber: 0),Skin(skinName: 'Old Saint Zilean',skinNumber: 1, price: 520),Skin(skinName: 'Groovy Zilean',skinNumber: 2, price: 520),
+          Skin(skinName: 'Shurima Desert Zilean',skinNumber: 3, price: 975),Skin(skinName: 'Time Machine Zilean',skinNumber: 4,price:520),Skin(skinName: 'Blood Moon Zilean',skinNumber: 5,price: 975)],
+        skills: [Skill(url: 'passive/Zilean_Passive.png',name: 'Time in a Bottle',description: 'Zilean stores time as Experience. When he has enough Experience to finish an ally\'s level, he can right-click them to impart it. Zilean receives as much Experience as he gives. Cannot be used in combat.'),
+          Skill(url: 'spell/ZileanQ.png',name: 'Time Bomb',description: 'Tosses a bomb to target area that sticks to units that come near it (prioritizes Champions). It detonates after 3 seconds, dealing area of effect damage. If a Time Bomb is detonated early by another Time Bomb, it also stuns enemies.'),
+          Skill(url: 'spell/ZileanW.png',name: 'Rewind',description: 'Zilean can prepare himself for future confrontations, reducing the cooldowns of his other basic abilities.'),
+          Skill(url: 'spell/TimeWarp.png',name: 'Time Warp',description: 'Zilean bends time around any unit, decreasing an enemy\'s Movement Speed or increasing an ally\'s Movement Speed for a short time.'),
+          Skill(url: 'spell/ChronoShift.png',name: 'ChronoShift',description: 'Zilean places a protective time rune on an allied champion, teleporting the champion back in time if they take lethal damage.')]
     );
 
     Champion brand = Champion(
-      name: 'Brand',
-      lore: 'Once a tribesman of the icy Freljord named Kegan Rodhe, the creature known as Brand is a lesson'
-          ' in the temptation of greater power. Seeking one of the legendary World Runes, Kegan betrayed his '
-          'companions and seized it for himself—and, in an instant, the man was no more. His soul burned away,'
-          ' his body a vessel of living flame, Brand now roams Valoran in search of other Runes, swearing revenge'
-          ' for wrongs he could never possibly have suffered in a dozen mortal lifetimes.',
-      tags: ['Mage'],
-      blueEssencePrice: 4800,
-      rpPrice: 880,
-      skins: [Skin(skinName: 'Brand',skinNumber: 0),Skin(skinName: 'Apocalyptic Brand',skinNumber: 1,price: 750),Skin(skinName: 'Vandal Brand',skinNumber: 2,price: 520),
-      Skin(skinName: 'Cryocore Brand',skinNumber: 3, price: 975),Skin(skinName: 'Zombie Brand',skinNumber: 4,price: 1820),Skin(skinName: 'Spirit Fire Brand',skinNumber: 5,price: 1350),
-      Skin(skinName: 'Battle Boss Brand',skinNumber: 6,price: 1350),Skin(skinName: 'Arclight Brand',skinNumber: 7,price: 1350)],
-      skills: [Skill(url: 'passive/BrandP.png',name: 'Blaze',description: 'Brand\'s spells light his targets ablaze, dealing damage over 4 seconds, stacking up to 3 times. If Brand kills an enemy while it is ablaze he regains mana. When Blaze reaches max stacks on a Champion or large monster, it becomes unstable. It detonates in 2 seconds, applying spell effects and dealing massive damage in an area around the victim.'),
-      Skill(url: 'spell/BrandQ.png',name: 'Sear',description: 'Brand launches a ball of fire forward that deals magic damage. If the target is ablaze, Sear will stun the target for 1.5 seconds.'),
-      Skill(url: 'spell/BrandW.png',name: 'Pillar of Flame',description: 'After a short delay, Brand creates a Pillar of Flame at a target area, dealing magic damage to enemy units within the area. Units that are ablaze take an additional 25% damage.'),
-      Skill(url: 'spell/BrandE.png',name: 'Conflagration',description: 'Brand conjures a powerful blast at his target, dealing magic damage to them. If the target is ablaze, Conflagration spreads to nearby enemies.'),
-      Skill(url: 'spell/BrandR.png',name: 'Pyroclasm',description: 'Brand unleashes a devastating torrent of fire, dealing magic damage each time it bounces, up to 5 bounces. Bounces prioritize stacking Blaze to max on Champions. If a target is ablaze, Pyroclasm will briefly slow them.')]
+        name: 'Brand',
+        lore: 'Once a tribesman of the icy Freljord named Kegan Rodhe, the creature known as Brand is a lesson'
+            ' in the temptation of greater power. Seeking one of the legendary World Runes, Kegan betrayed his '
+            'companions and seized it for himself—and, in an instant, the man was no more. His soul burned away,'
+            ' his body a vessel of living flame, Brand now roams Valoran in search of other Runes, swearing revenge'
+            ' for wrongs he could never possibly have suffered in a dozen mortal lifetimes.',
+        tags: ['Mage'],
+        blueEssencePrice: 4800,
+        rpPrice: 880,
+        skins: [Skin(skinName: 'Brand',skinNumber: 0),Skin(skinName: 'Apocalyptic Brand',skinNumber: 1,price: 750),Skin(skinName: 'Vandal Brand',skinNumber: 2,price: 520),
+          Skin(skinName: 'Cryocore Brand',skinNumber: 3, price: 975),Skin(skinName: 'Zombie Brand',skinNumber: 4,price: 1820),Skin(skinName: 'Spirit Fire Brand',skinNumber: 5,price: 1350),
+          Skin(skinName: 'Battle Boss Brand',skinNumber: 6,price: 1350),Skin(skinName: 'Arclight Brand',skinNumber: 7,price: 1350)],
+        skills: [Skill(url: 'passive/BrandP.png',name: 'Blaze',description: 'Brand\'s spells light his targets ablaze, dealing damage over 4 seconds, stacking up to 3 times. If Brand kills an enemy while it is ablaze he regains mana. When Blaze reaches max stacks on a Champion or large monster, it becomes unstable. It detonates in 2 seconds, applying spell effects and dealing massive damage in an area around the victim.'),
+          Skill(url: 'spell/BrandQ.png',name: 'Sear',description: 'Brand launches a ball of fire forward that deals magic damage. If the target is ablaze, Sear will stun the target for 1.5 seconds.'),
+          Skill(url: 'spell/BrandW.png',name: 'Pillar of Flame',description: 'After a short delay, Brand creates a Pillar of Flame at a target area, dealing magic damage to enemy units within the area. Units that are ablaze take an additional 25% damage.'),
+          Skill(url: 'spell/BrandE.png',name: 'Conflagration',description: 'Brand conjures a powerful blast at his target, dealing magic damage to them. If the target is ablaze, Conflagration spreads to nearby enemies.'),
+          Skill(url: 'spell/BrandR.png',name: 'Pyroclasm',description: 'Brand unleashes a devastating torrent of fire, dealing magic damage each time it bounces, up to 5 bounces. Bounces prioritize stacking Blaze to max on Champions. If a target is ablaze, Pyroclasm will briefly slow them.')]
     );
 
     Champion anivia = Champion(

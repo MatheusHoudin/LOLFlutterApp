@@ -13,37 +13,35 @@ class MainPage extends StatelessWidget{
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color(0xff121212),
+        backgroundColor: appBarColor,
         leading: Padding(
           padding: EdgeInsets.all(10),
           child: Image.asset('assets/images/logo_lol.jpg'),
         ),
         title: Text(
-          'League of Legends',
+          'Champions Gallery',
           style: TextStyle(
             color: appBarTextColor
           ),
         ),
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            _championRotation(context),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(left: 4,right: 4),
-                child: ChampionsList(database: database,),
-              ),
-            )
-          ],
-        )
+      body: Column(
+        children: <Widget>[
+          _championRotation(context),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 4,right: 4),
+              child: ChampionsList(database: database,),
+            ),
+          )
+        ],
       ),
     );
   }
 
   Widget _championRotation(BuildContext context){
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.35,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -64,15 +62,12 @@ class MainPage extends StatelessWidget{
           ),
           Expanded(
             flex: 8,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: ListView.builder(
-                itemCount: database.rotationChampions.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index){
-                  return ChampionRotation(champion: database.rotationChampions[index],);
-                },
-              ),
+            child: ListView.builder(
+              itemCount: database.rotationChampions.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index){
+                return ChampionRotation(champion: database.rotationChampions[index],);
+              },
             ),
           )
         ],

@@ -41,17 +41,16 @@ class _ChampionDetailsState extends State<ChampionDetails> {
           onTap: () => Navigator.pop(context),
           child: Hero(
             tag: widget.champion.name,
-            child: Image.network('$squareImagePath${widget.champion.name}.png',width: 100,height: 100,),
+            child: Image.network('$squareImagePath${widget.champion.name}.png',),
           ),
         ),
-        backgroundColor: Color(0xff121212),
+        backgroundColor: appBarColor,
         title: Text(widget.champion.name),
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(8),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               _championSkins(),
@@ -78,17 +77,15 @@ class _ChampionDetailsState extends State<ChampionDetails> {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Container(
-            child: PageView(
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              onPageChanged: (page) {
-                setState(() {
-                  this.currentSkinPage = page;
-                });
-              },
-              children: widget.champion.skins.map((skin) => _skin(skin)).toList(),
-            ),
+          PageView(
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            onPageChanged: (page) {
+              setState(() {
+                this.currentSkinPage = page;
+              });
+            },
+            children: widget.champion.skins.map((skin) => _skin(skin)).toList(),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -122,12 +119,10 @@ class _ChampionDetailsState extends State<ChampionDetails> {
           borderRadius: BorderRadius.all(Radius.circular(4))
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            flex: 5,
             child: Padding(
-              padding: const EdgeInsets.all(2),
+              padding: EdgeInsets.all(2),
               child: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -139,7 +134,6 @@ class _ChampionDetailsState extends State<ChampionDetails> {
             ),
           ),
           Expanded(
-            flex: 5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,16 +145,13 @@ class _ChampionDetailsState extends State<ChampionDetails> {
                 ),
                 Expanded(
                   child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(2),
-                      child: Text(
-                        skin.skinName,
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
-                        ),
+                    child: Text(
+                      skin.skinName,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ),

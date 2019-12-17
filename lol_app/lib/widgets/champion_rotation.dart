@@ -12,7 +12,7 @@ class ChampionRotation extends StatelessWidget{
   Widget build(BuildContext context) {
     return Card(
       color: cardColor,
-      elevation: 2,
+      elevation: 6,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(12))
       ),
